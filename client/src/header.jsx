@@ -6,7 +6,7 @@ const Header = () => {
   const {setUserInfo, userInfo} = useContext(UserContext);
     useEffect(() => {
       try{
-        fetch('http://localhost:4000/profile', {
+        fetch(process.env.REACT_APP_API, 'profile', {
           credentials:'include',
         }).then( response => {
           response.json().then(data => {
@@ -26,7 +26,7 @@ const Header = () => {
 
     function logout(){
       try{
-        fetch('http://localhost:4000/logout', {
+        fetch(process.env.REACT_APP_API+'logout', {
         credentials : 'include',
         method : 'POST'
         });

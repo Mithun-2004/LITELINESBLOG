@@ -6,7 +6,7 @@ const IndexPage = () => {
 
     useEffect(() => {
         try{
-            fetch('http://localhost:4000/post').then(response => {
+            fetch(process.env.REACT_APP_API+'post').then(response => {
                 response.json().then(data => {
                     if (data.success){
                         setPosts(data.message);

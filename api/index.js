@@ -21,7 +21,7 @@ app.use(cookieParser());
 app.use('/uploads', express.static(__dirname + "/uploads"));
 
 mongoose.connect(process.env.mongodbURL)
-.then((result) => app.listen(4000, () => console.log("server started running on port 4000")))
+.then((result) => console.log("DB connected."))
 .catch((err) => console.log(err))
 
 
@@ -42,7 +42,6 @@ app.post("/register", async (req, res) => {
             })
             jwt.sign({userName, id:UserDoc._id}, process.env.secret, {expiresIn : 24 * 60 * 60}, (err, token) => {
                 if (err) throw err;
-                console.log(token);
                 res.cookie('token ', token, {httpOnly : true, maxAge : 24 * 60 * 60 * 1000}).status(200).json({success:true, message:{
                     id : UserDoc._id,
                     userName
@@ -218,4 +217,11 @@ app.get('/post/:id', async (req, res) => {
     }
     
 })
+
+
+if (process.env.API_PORT){
+    app.listen(process.env.API_PORT)
+}
+
+module.exports = app;
 
