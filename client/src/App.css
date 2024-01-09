@@ -1,0 +1,306 @@
+@import url('https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,500;0,600;0,700;0,800;1,700&display=swap');
+
+*{
+    margin : 0;
+    padding : 0;
+    box-sizing : border-box;
+    font-family: 'Alegreya', serif;
+}
+body{
+    max-width : 1200px;
+    width : 90%;
+    margin : 0 auto;
+    overflow-x: hidden;
+}
+
+/* Header */
+header{
+    margin-bottom : 50px;
+}
+.logo a{
+    text-decoration : none;
+    color : black;
+}
+.nav{
+    display : flex;
+    align-items : center;
+    justify-content : space-between;
+    flex-wrap : wrap;
+    padding : 20px 0;
+}
+.enter-links{
+    display : flex;
+    gap : 15px;
+    align-items : center;
+    justify-content : center;
+}
+.enter-link{
+    text-decoration : none;
+    color : black;
+    transition : 0.5s ease;
+}
+.enter-link:hover{
+    color : crimson;
+}
+#logout-btn{
+    border : 0;
+    outline : 0;
+    background : white;
+    color : black;
+    font-size : 1rem;
+    cursor : pointer;
+    transition : 0.5s ease;
+    font-size : 1.25rem;
+}
+#logout-btn:hover{
+    color : crimson;
+}
+#create-link{
+    text-decoration : none;
+    color : crimson;
+    font-size : 1rem;
+    transition : 0.5s ease;
+}
+#create-link:hover{
+    color : black;
+}
+.info{
+    background : linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('./images/background2.jpg');
+    background-position : center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width : 100%;
+    min-height : 300px;
+    display : flex;
+    align-items : center;
+    justify-content : center;
+    padding : 0 20px;
+    color : white;
+    text-align : center;
+}
+.info-text{
+    max-width : 700px;
+    width : 90%;
+}
+.info-text h1{
+    color : crimson;
+    margin-bottom : 10px;
+}
+
+@media screen and (max-width : 375px){
+    .logo{
+        font-size : 1.25rem;
+    }
+    .enter-links, #logout-btn, #create-link{
+        font-size : 0.9rem;
+    }
+    .info-text h1{
+        font-size : 1.5rem;
+    }  
+    .info-text p{
+        font-size : 0.9rem;
+    }
+}
+
+/* main section */
+.posts{
+    display : flex;
+    align-items : center;
+    justify-content : center;
+    gap : 50px;
+    flex-wrap : wrap;
+    margin-bottom : 30px;
+}
+.post{
+    box-shadow: 0 1px 7px rgba(0,0,0,0.5);
+    max-width : 300px;
+    width : 90%;
+    transition : 0.5s ease;
+}
+.post:hover{
+    transform : scale(1.05);
+}
+.post-info{
+    padding : 20px;
+}
+.post-author{
+    color : white;
+    background-color : rgb(78, 116, 223);
+    padding : 8px;
+    border-radius : 20px;
+    display : inline-block;
+    font-size : 0.9rem;
+    margin-bottom : 5px;
+}
+.post-title{
+    color : crimson;
+    font-weight : 500;
+    font-size : 1.5rem;
+    margin-bottom : 10px;
+}
+.post-img{
+    height : 200px;
+    width : 100%;
+    object-fit: cover;
+    object-position: center;
+}
+.read-more-btn{
+    margin-left : 20px;
+    margin-bottom : 20px;
+}
+.read-more-btn a{
+    text-decoration : none;
+    font-weight : bold;
+    color : rgb(117, 109, 109);
+    display : flex;
+    align-items : center;
+    gap : 10px;
+    transition : 0.5s ease;
+}
+.read-more-btn a:hover{
+    color : crimson;
+}
+
+/* login page and Register page*/
+.login-form, .register-form{
+    max-width : 440px;
+    width : 90%;
+    margin : 0 auto;
+    padding : 20px;
+    border : 2px solid black;
+}
+.login-form h1, .register-form h1{
+    text-align : center;
+    margin-bottom : 20px;
+}
+.login-form div, .register-form div{
+    margin-bottom : 15px;
+}
+.login-form label, .register-form label{
+    display : block;
+    margin-bottom : 10px;
+}
+.login-form input, .register-form input{
+    width : 90%;
+    padding : 10px;
+}
+.login-buttons, .register-buttons{
+    margin-top : 25px;
+}
+#login-btn, #login-reset, #register-btn, #register-reset{
+    padding : 8px 20px;
+    background-color : #333;
+    color : white;
+    border : 2px solid black;
+    outline : 0;
+    margin-right : 10px;
+    font-weight : bold;
+    cursor : pointer;
+    transition : 0.5s ease;
+}
+#login-btn:hover, #login-reset:hover, #register-btn:hover, #register-reset:hover{
+    color : black;
+    background-color: white;
+}
+.login-form p, .register-form p{
+    text-align : center;
+}
+
+
+/* Create Post Page */
+.create-form h1{
+    text-align : center;
+    margin-bottom : 20px;
+}
+.create-inputs{
+    margin-bottom : 10px;
+    margin-top : 10px;
+    text-align : center;
+}
+#create-title, #create-summary{
+    padding : 10px;
+    font-size : 1rem;
+    width : 100%;
+}
+#create-file{
+    padding : 10px;
+    font-size : 1rem;
+}
+#create-btn{
+    padding : 10px 20px;
+    font-size : 1rem;
+    background-color : white;
+    border : 2px solid black;
+    outline : 0;
+    cursor : pointer;
+    transition : 0.5s ease;
+}
+#create-btn:hover{
+    color : white;
+    background-color : black;
+}
+
+/* single post page */
+.single-post{
+    padding-bottom : 5%;
+}
+.single-post-image{
+    margin-bottom : 25px;
+    text-align : center;
+}
+.single-post-image img{
+    max-width: 100%;
+    max-height: 300px;
+    object-fit: contain;
+    object-position : center center;
+}
+.single-post-time{
+    color : grey;
+    text-align : center;
+}
+.single-post-info{
+    margin-bottom : 10px;
+    text-align : center;
+}
+.single-post-author{
+    color : crimson;
+}
+.edit-row{
+    margin-bottom : 20px;
+    text-align : center;
+}
+.edit-btn{
+    text-decoration : none;
+    padding : 10px 20px;
+    font-weight : bold;
+    border : 0;
+    outline : 0;
+    background-color : black;
+    color : white;
+    cursor : pointer;
+    transition : 0.5s ease;
+    display : inline-flex;
+    align-items : center;
+    justify-content : center;
+    gap : 5px;
+}
+.edit-btn:hover{
+    background-color : crimson;
+}
+.single-post-title, .single-post-info{
+    text-align : center;
+}
+.single-post-content{
+    line-height : 1.5;
+    font-size : 1.1rem;
+    max-width : 850px;
+    width : 90%;
+    margin : 0 auto;
+}
+
+
+@media screen and (max-width : 400px){
+    .single-post-image img{
+        max-width : 90vw;
+    }
+}
