@@ -15,7 +15,7 @@ const app = express();
 
 require("dotenv").config();
 
-app.use(cors({credentials:true, origin:'http://localhost:3000'}));
+app.use(cors({credentials:true, origin:'https://litelinesblog.onrender.com'}));
 app.use(express.json());
 app.use(cookieParser());
 app.use('/uploads', express.static(__dirname + "/uploads"));
