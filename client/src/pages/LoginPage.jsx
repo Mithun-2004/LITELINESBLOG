@@ -11,7 +11,7 @@ const LoginPage = () => {
     const login = async(e) => {
         e.preventDefault();
         try{
-            const response = await fetch(process.env.REACT_APP_API+"login", {
+            const response = await fetch(process.env.REACT_APP_API+"/login", {
                 method: 'POST',
                 body: JSON.stringify({userName: loginName, password: loginPassword}),
                 headers: {'Content-type' : 'application/json'},

@@ -12,7 +12,7 @@ const PostPage = () => {
     useEffect(() => {
         try{
             if (id){
-                fetch(process.env.REACT_APP_API+`post/${id}`)
+                fetch(process.env.REACT_APP_API+`/post/${id}`)
                 .then(response => response.json().then(data => {
                     if (data.success){
                         const info = data.message;
@@ -43,7 +43,7 @@ const PostPage = () => {
                 </div>
             )}
             <div className="single-post-image">
-                <img src={process.env.REACT_APP_API+`${postInfo.cover}`} alt="" />
+                <img src={process.env.REACT_APP_API+`/${postInfo.cover}`} alt="" />
             </div>
             <div className="single-post-content" dangerouslySetInnerHTML={{__html:postInfo.content}}></div>
         </div>

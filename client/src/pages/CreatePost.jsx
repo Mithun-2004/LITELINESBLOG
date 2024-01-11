@@ -38,7 +38,7 @@ const CreatePost = () => {
         e.preventDefault();
 
         try{
-            const response = await fetch(process.env.REACT_APP_API+'post', {
+            const response = await fetch(process.env.REACT_APP_API+'/post', {
                 method: 'POST',
                 body: info,
                 credentials: 'include'

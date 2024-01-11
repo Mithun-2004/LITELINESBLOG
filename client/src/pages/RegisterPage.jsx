@@ -12,7 +12,7 @@ const RegisterPage = () => {
         e.preventDefault();
 
         try{
-            const response = await fetch(process.env.REACT_APP_API+"register", {
+            const response = await fetch(process.env.REACT_APP_API+"/register", {
                 method: 'POST',
                 body: JSON.stringify({userName: registerName, password: registerPassword}),
                 headers: {'Content-Type':'application/json'}, 

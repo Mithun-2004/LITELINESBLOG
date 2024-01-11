@@ -31,7 +31,7 @@ const EditPost = () => {
     const [redirect, setRedirect] = useState(false);
 
     useEffect(() => {
-        fetch(process.env.REACT_APP_API+"post/"+id)
+        fetch(process.env.REACT_APP_API+"/post/"+id)
         .then(response => {
             response.json().then(data => {
                 if (data.success){
@@ -57,7 +57,7 @@ const EditPost = () => {
         info.set('file', files?.[0]);
 
         try{
-            const response = await fetch(process.env.REACT_APP_API+'post', {
+            const response = await fetch(process.env.REACT_APP_API+'/post', {
                 method: 'PUT',
                 body: info,
                 credentials:'include'
@@ -84,7 +84,7 @@ const EditPost = () => {
 
     return ( 
         <form className="create-form" onSubmit={updatePost}>
-            <h1>Create Post</h1>
+            <h1>Edit Post</h1>
             <div className="create-inputs"><input type="text" placeholder="Title" id="create-title" value={title} onChange={(e) => setTitle(e.target.value)} required/></div>
             <div className="create-inputs"><input type="text" placeholder="Summary" id="create-summary" value={summary} onChange={(e) => setSummary(e.target.value)} /></div>
             <div className="create-inputs"><input type="file" id="create-file" onChange={e => setFiles(e.target.files)}/></div>
