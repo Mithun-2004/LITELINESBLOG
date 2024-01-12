@@ -42,7 +42,7 @@ app.post("/register", async (req, res) => {
             })
             jwt.sign({userName, id:UserDoc._id}, process.env.secret, {expiresIn : 24 * 60 * 60}, (err, token) => {
                 if (err) throw err;
-                res.cookie('token ', token, {maxAge : 24 * 60 * 60 * 1000}).status(200).json({success:true, message:{
+                res.cookie('token ', token, {maxAge : 24 * 60 * 60 * 1000, secure:true, sameSite:'none'}).status(200).json({success:true, message:{
                     id : UserDoc._id,
                     userName
                 }});
@@ -67,7 +67,7 @@ app.post("/login", async (req, res) => {
             if (passOK){
                 jwt.sign({userName, id:userDoc._id}, process.env.secret, {expiresIn : 24 * 60 * 60}, (err, token) => {
                     if (err) throw err;
-                    res.cookie('token ', token, {maxAge : 24 * 60 * 60 * 1000}).status(200).json({success:true, message:{
+                    res.cookie('token ', token, {maxAge : 24 * 60 * 60 * 1000, secure:true, sameSite:'none'}).status(200).json({success:true, message:{
                         id : userDoc._id,
                         userName
                     }});
