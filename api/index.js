@@ -108,7 +108,7 @@ app.get('/profile', (req, res) => {
 
 app.post('/logout', (req, res) => {
     try{
-        res.cookie('token', '').status(200).json({success:true, message:"user logged out successfully"});
+        res.cookie('token', '', {secure:true, sameSite:'none'}).status(200).json({success:true, message:"user logged out successfully"});
     }
     catch (err){
         console.log(err);
