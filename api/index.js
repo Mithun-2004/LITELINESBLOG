@@ -96,7 +96,7 @@ app.get('/profile', (req, res) => {
             })
         }
         else{
-            res.status(400).json({success:false, message:"some error occured while checking user profile."})
+            res.status(200).json({success:false, message:"some error occured while checking user profile."})
         }
     }
     catch (err){

@@ -6,11 +6,12 @@ const RegisterPage = () => {
     const [registerName, setRegisterName] = useState("");
     const [registerPassword, setRegisterPassword] = useState("");
     const [redirect, setRedirect] = useState(false);
+    const [registerInfo, setRegisterInfo] = useState('');
     const {setUserInfo} = useContext(UserContext);
 
     const register = async (e) => {
         e.preventDefault();
-
+        setRegisterInfo("Loading...");
         try{
             const response = await fetch(process.env.REACT_APP_API+"/register", {
                 method: 'POST',
@@ -24,13 +25,14 @@ const RegisterPage = () => {
                 setRedirect(true);
                 setRegisterName("");
                 setRegisterPassword("");
+                setRegisterInfo("");
             }else{
-                alert(data.message);
+                setRegisterInfo(data.message);
             }
         }
         catch (err){
             console.log(err);
-            alert("Error occured.");
+            setRegisterInfo("Error occured.");
         }
     }
 
@@ -54,6 +56,7 @@ const RegisterPage = () => {
                 <button id="register-reset" onClick={(e) => {e.preventDefault(); setRegisterName(""); setRegisterPassword("")}}>Reset</button>
             </div>
             <p>Already have an account? <Link to="/login">Login</Link></p>
+            <p className="error-info">{registerInfo}</p>
         </form>
      );
 }

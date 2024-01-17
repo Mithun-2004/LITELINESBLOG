@@ -29,6 +29,7 @@ const EditPost = () => {
     const [files, setFiles] = useState('');
     const [cover, setCover] = useState('');
     const [redirect, setRedirect] = useState(false);
+    const [editInfo, setEditInfo] = useState('');
 
     useEffect(() => {
         fetch(process.env.REACT_APP_API+"/post/"+id)
@@ -46,6 +47,7 @@ const EditPost = () => {
 
     async function updatePost(e){
         e.preventDefault();
+        setEditInfo('Loading...');
         const info = new FormData();
         info.set('title', title);
         info.set('summary', summary);
@@ -66,14 +68,15 @@ const EditPost = () => {
 
             if (data.success){
                 setRedirect(true);
+                setEditInfo('');
             }
             else{
-                alert(data.message);
+                setEditInfo(data.message);
             }
         }
         catch (err) {
             console.log(err);
-            alert("Error occured");
+            setEditInfo("Error occured");
         }
         
     }
@@ -90,6 +93,7 @@ const EditPost = () => {
             <div className="create-inputs"><input type="file" id="create-file" onChange={e => setFiles(e.target.files)}/></div>
             <ReactQuill modules={modules} formats={formats} theme="snow" value={content} onChange={setContent}/>
             <div className="create-inputs"><button type="submit" id="create-btn">Update</button></div>
+            <p className="error-info">{editInfo}</p>
         </form>
      );
 }

@@ -5,11 +5,13 @@ import {UserContext} from '../UserContext';
 const LoginPage = () => {
     const [loginName, setLoginName] = useState("");
     const [loginPassword, setLoginPassword] = useState("");
+    const [loginInfo, setLoginInfo] = useState('');
     const [redirect, setRedirect] = useState(false);
     const {setUserInfo} = useContext(UserContext);
 
     const login = async(e) => {
         e.preventDefault();
+        setLoginInfo('Loading...');
         try{
             const response = await fetch(process.env.REACT_APP_API+"/login", {
                 method: 'POST',
@@ -24,14 +26,15 @@ const LoginPage = () => {
                 setRedirect(true);
                 setLoginName("");
                 setLoginPassword("");
+                setLoginInfo("");
             }else{
                 console.log(data.message);
-                alert(data.message);
+                setLoginInfo(data.message);
             }
         }
         catch (err){
             console.log(err);
-            alert("Error occured.");
+            setLoginInfo("Error occured.");
         }
         
     }
@@ -56,6 +59,7 @@ const LoginPage = () => {
                 <button id="login-reset" onClick={(e) => {e.preventDefault(); setLoginName(""); setLoginPassword("")}}>Reset</button>
             </div>
             <p>Don't have an account? <Link to="/register">Register</Link></p>
+            <p className="error-info">{loginInfo}</p>
         </form>
      );
 }

@@ -29,7 +29,7 @@ const IndexPage = () => {
                 return <Post {...post} key={index} />
             }))}
             {posts.length <= 0 && (
-                <p>No posts to display.</p>
+                <p>Loading...</p>
             )}
         </div>
      );

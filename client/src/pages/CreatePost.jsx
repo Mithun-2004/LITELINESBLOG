@@ -28,6 +28,7 @@ const CreatePost = () => {
     const [content, setContent] = useState('');
     const [files, setFiles] = useState('');
     const [redirect, setRedirect] = useState(false);
+    const [createInfo, setCreateInfo] = useState("");
 
     const createNewPost = async (e) => {
         const info = new FormData();
@@ -36,7 +37,7 @@ const CreatePost = () => {
         info.set('content', content);
         info.set('file', files[0]);
         e.preventDefault();
-
+        setCreateInfo("Loading...")
         try{
             const response = await fetch(process.env.REACT_APP_API+'/post', {
                 method: 'POST',
@@ -48,13 +49,14 @@ const CreatePost = () => {
 
             if (data.success){
                 setRedirect(true);
+                setCreateInfo('');
             }else{
-                alert(data.message);
+                setCreateInfo(data.message);
             }
         }
         catch (err){
             console.log(err);
-            alert("Error occured");
+            setCreateInfo("Error occured");
         }
         
     }
@@ -71,6 +73,7 @@ const CreatePost = () => {
             <div className="create-inputs"><input type="file" id="create-file" onChange={e => setFiles(e.target.files)}/></div>
             <ReactQuill modules={modules} formats={formats} theme="snow" value={content} onChange={setContent}/>
             <div className="create-inputs"><button type="submit" id="create-btn">Create</button></div>
+            <p class="error-info">{createInfo}</p>
         </form>
      );
 }
