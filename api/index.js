@@ -21,7 +21,12 @@ app.use(cookieParser());
 app.use('/uploads', express.static(__dirname + "/uploads"));
 
 mongoose.connect(process.env.mongodbURL)
-.then((result) => console.log("DB connected."))
+.then((result) => {   
+    if (process.env.API_PORT){
+        app.listen(process.env.API_PORT)
+    }
+    console.log("DB connected.")
+})
 .catch((err) => console.log(err))
 
 
@@ -223,9 +228,6 @@ app.get('/post/:id', async (req, res) => {
 })
 
 
-if (process.env.API_PORT){
-    app.listen(process.env.API_PORT)
-}
 
 module.exports = app;
 
