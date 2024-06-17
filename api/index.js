@@ -15,7 +15,22 @@ const app = express();
 
 require("dotenv").config();
 
-app.use(cors({credentials:true, origin:'https://litelines.onrender.com'}));
+const allowedOrigins = [process.env.FRONTEND_DEPLOYED_LINK, process.env.FRONTEND_LOCAL_LINK];
+
+const corsOptions = {
+  credentials: true,
+  origin: function (origin, callback) {
+    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  }
+};
+
+app.use(cors(corsOptions));
+
+// app.use(cors({credentials:true, origin:process.env.FRONTEND_DEPLOYED_LINK}));
 app.use(express.json());
 app.use(cookieParser());
 app.use('/uploads', express.static(__dirname + "/uploads"));
